@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BHOJAN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+      :root {
+        --bg-dark: #0d0d0d;
+        --panel-bg: rgba(20, 20, 20, 0.7);
+        --panel-border: rgba(255, 255, 255, 0.1);
+        --text-light: #f0f0f0;
+        --text-muted: #888888;
+        --accent-red: #e52e2e;
+        --accent-red-dark: #b91c1c;
+        --red-glow: 0 0 15px rgba(229, 46, 46, 0.5), 0 0 5px rgba(229, 46, 46, 0.8);
+      }
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--bg-dark);
+        color: var(--text-light);
+      }
+      .glass-panel {
+        background-color: var(--panel-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--panel-border);
+      }
+      .btn-gradient {
+        background-image: linear-gradient(to right, var(--accent-red), var(--accent-red-dark));
+        box-shadow: 0 4px 15px 0 rgba(229, 46, 46, 0.4);
+        transition: all 0.3s ease-in-out;
+      }
+      .btn-gradient:hover {
+        box-shadow: var(--red-glow);
+        transform: translateY(-2px);
+      }
+      .card-hover-glow::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(45deg, var(--accent-red), transparent, var(--accent-red));
+        -webkit-mask: 
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        pointer-events: none; /* FIX: Allow clicks to pass through the overlay */
+      }
+      .card-hover-glow:hover::after {
+        opacity: 1;
+      }
+      @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(229, 46, 46, 0.7); }
+        70% { box-shadow: 0 0 0 10px rgba(229, 46, 46, 0); }
+      }
+      .animate-pulse-red {
+        animation: pulse 2s infinite;
+      }
+      
+      /* New simplified splash screen animations */
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .animate-fade-in {
+        animation: fadeIn 1s ease-out forwards;
+      }
+
+      @keyframes iconGlow {
+        0%, 100% { box-shadow: var(--red-glow); transform: scale(1); }
+        50% { box-shadow: 0 0 30px rgba(229, 46, 46, 0.8), 0 0 10px rgba(229, 46, 46, 1); transform: scale(1.05); }
+      }
+      .animate-icon-glow {
+        animation: iconGlow 3s ease-in-out infinite;
+      }
+
+      @keyframes textReveal {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-text-reveal {
+        opacity: 0;
+        animation: textReveal 0.8s ease-out forwards;
+        animation-delay: calc(var(--stagger, 0) * 0.2s + 0.5s);
+      }
+
+      @keyframes buttonSlideUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-button-slide-up {
+        opacity: 0;
+        animation: buttonSlideUp 1s ease-out forwards;
+        animation-delay: 1.2s;
+      }
+
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1"
+  }
+}
+</script>
+</head>
+  <body class="antialiased">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

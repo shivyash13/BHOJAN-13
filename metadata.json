@@ -1,0 +1,7 @@
+{
+  "name": "BHOJAN",
+  "description": "An online food ordering application that starts with a welcoming splash screen and personalized taste selection, allowing users to order from a menu and send it to a merchant via WhatsApp.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
